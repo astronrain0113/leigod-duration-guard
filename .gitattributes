@@ -1,0 +1,29 @@
+# ============================================================================
+# 行尾与文本判定
+# ============================================================================
+# 为什么不写 `* text=auto`：本项目有一批 **GBK 编码的 .bat**
+# （Windows 中文环境下双击运行需要 GBK + CRLF）。若让 git 自行"规范化"，
+# 它可能按 UTF-8 重写，中文提示会变成乱码 —— 那是很难查的回归。
+# 所以这里只声明"不要动内容"，只固定行尾。
+
+*.bat  text eol=crlf
+*.cmd  text eol=crlf
+*.ps1  text eol=crlf
+
+*.py   text eol=lf
+*.md   text eol=lf
+*.json text eol=lf
+*.yml  text eol=lf
+*.yaml text eol=lf
+*.spec text eol=lf
+*.gitignore    text eol=lf
+*.gitattributes text eol=lf
+
+# 二进制：明确标出来，避免 git 尝试做文本 diff / 行尾转换
+*.png  binary
+*.ico  binary
+*.jpg  binary
+*.onnx binary
+*.dll  binary
+*.pyd  binary
+*.exe  binary

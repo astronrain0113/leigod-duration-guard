@@ -1,0 +1,12 @@
+# 让 Issue 页面同时给出"怎么自助排查"的入口。
+# 为什么不做"空白 Issue"：没有诊断信息的 bug 报告基本无法定位，
+# 而本工具**自带诊断产物生成器**（面板「界面诊断」），
+# 引导用户附上它，能把排查从十轮来回压到一轮。
+blank_issues_enabled: false
+contact_links:
+  - name: 使用教程与常见问题
+    url: https://github.com/astronrain0113/leigod-duration-guard/blob/main/使用教程.md
+    about: 先看这里：每个界面元素是什么意思、读不出状态怎么办、✕ 点不动怎么办
+  - name: 工程笔记（设计与事故复盘）
+    url: https://github.com/astronrain0113/leigod-duration-guard/blob/main/docs/工程笔记-完整版.md
+    about: 想了解某个设计为什么这么定、踩过哪些坑，看这份

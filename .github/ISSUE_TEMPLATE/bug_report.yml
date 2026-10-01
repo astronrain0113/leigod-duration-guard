@@ -1,0 +1,81 @@
+name: 报告问题 / Bug report
+description: 工具不生效、读不出状态、界面异常等
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 先做一件事：带上诊断产物
+
+        打开面板 → 点 **「界面诊断」**（或双击目录里的 `1-查状态.bat`），
+        把生成的 `logs/inspector*` 目录**整个拖进下面的输入框**。
+
+        里面有：版本与构建号、系统与缩放比、窗口信息、控件树、截图、
+        OCR 逐行结果、以及识别结论。**它能把排查从十轮来回压到一轮。**
+
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 现象（"在哪一步不灵"）
+      description: 请具体到某一步，而不是"不生效"
+      placeholder: |
+        例：点了客户端右上角的 ✕ 之后，过了 5 秒才有反应 / 面板一直显示「无法确认」 /
+        它把 ✕ 锁住了，但我手动也点不动了 / 托盘图标一直是灰的
+    validations:
+      required: true
+
+  - type: textarea
+    id: diagnostic
+    attributes:
+      label: 诊断产物
+      description: 把 `logs/inspector*` 目录拖进来（或贴关键文件内容）
+      placeholder: 拖拽文件夹到这里
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: 版本 / 构建号
+      description: 日志第一行有，形如 `build 2026-10-01.5`；或面板悬停提示
+      placeholder: build 2026-10-01.5
+    validations:
+      required: true
+
+  - type: dropdown
+    id: install
+    attributes:
+      label: 你是怎么用的
+      options:
+        - 下载的 Release（打包好的 exe）
+        - 从源码 python main.py 运行
+        - 自己打包的 exe
+    validations:
+      required: true
+
+  - type: input
+    id: sys
+    attributes:
+      label: 系统版本与缩放比
+      description: 例如 Windows 11 23H2 / 125%
+      placeholder: Windows 11 23H2 / 125%
+    validations:
+      required: true
+
+  - type: textarea
+    id: check
+    attributes:
+      label: （可选）环境自检输出
+      description: 命令行执行 `python main.py --check` 或 `LeigodGuardCUI.exe --check` 的输出
+      render: text
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 提交前确认
+      options:
+        - label: 我已附上诊断产物（没有诊断产物的问题通常无法定位）
+          required: true
+        - label: 我确认工具是**以管理员身份**运行的（不提权会静默失效）
+          required: true

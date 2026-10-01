@@ -1,0 +1,50 @@
+name: 建议 / 功能请求
+description: 想加什么功能、觉得哪里不好用
+title: "[建议] "
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        欢迎提建议。这个工具的原则是 **"宁可拦你一次，也不让你以为停好了"** ——
+        与这条冲突的建议（例如"读不出状态时就直接放行吧"）大概率不会被采纳，
+        但请尽管说，我更想知道**你实际遇到的麻烦**。
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 你遇到的实际麻烦是什么
+      description: 先说场景，再说你希望的方案 —— 场景比方案更有价值
+      placeholder: |
+        例：我每天开两次加速器，面板固定在左侧会挡住我的聊天窗口，
+        希望能固定在某个坐标……
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: 你希望的方案（可选）
+      placeholder: 你觉得应该怎么改
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: 类型
+      options:
+        - 使用体验 / 界面
+        - 识别可靠性（读不出状态、读错状态）
+        - 关闭保护行为
+        - 性能 / 体积
+        - 文档
+        - 其它
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: 确认
+      options:
+        - label: 我已搜索过现有 Issue，确认没有重复
+          required: true

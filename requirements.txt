@@ -1,0 +1,34 @@
+# ============================================================================
+# 运行依赖（这一组版本是**在同一台机器上一起验证过**的组合）
+# ============================================================================
+# 安装：pip install -r requirements.txt
+#
+# 说明：这里只列**直接依赖**。下面这些会自动被带进来，不用手写：
+#   opencv-python       ← rapidocr-onnxruntime 的图像预处理依赖
+#   shapely / pyclipper ← rapidocr-onnxruntime 的多边形运算依赖
+#   shiboken6           ← PySide6 的绑定层
+#
+# ⚠️ 打包成 exe 时有两个坑（详见 docs/工程笔记-完整版.md）：
+#   1. rapidocr 的 .onnx 模型与 config.yaml 是**数据文件**，必须显式
+#      collect_data_files，否则运行期构造引擎失败、且异常会被吞掉；
+#   2. 它是**按 YAML 动态 import** 子模块的，必须 collect_submodules。
+#    只写 hiddenimports 是不够的 —— 这两条都已写进 packaging/*.spec。
+
+# --- 界面（Qt Widgets，未使用 QML/WebEngine）---
+PySide6>=6.6,<7
+
+# --- 进程与环境 ---
+psutil>=5.9
+
+# --- 截图与图像处理 ---
+pillow>=10.0
+numpy>=1.26
+
+# --- 识别层：UI Automation（第一优先级）---
+uiautomation>=2.0.15
+# win32gui / win32ui / win32api / win32process：PrintWindow 截图与窗口探测
+pywin32>=306
+
+# --- 识别层：OCR（第二优先级兜底；只有它真的能构造起来才可用）---
+rapidocr-onnxruntime>=1.2
+onnxruntime>=1.17

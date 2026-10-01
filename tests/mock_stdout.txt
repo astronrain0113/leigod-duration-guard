@@ -1,0 +1,2 @@
+{"t": 1790639367.611, "ev": "mock_started", "hwnd": 1116630, "btn": 264678, "state": "RUNNING", "title": "雷神加速器"}
+{"t": 1790639367.69, "ev": "window_created", "hwnd": 1116630}
